@@ -12,7 +12,6 @@ const DefaultLayout = loadable(() => import(/* webpackChunkName: 'default' */ '.
 const View404 = loadable(() => import(/* webpackChunkName: '404' */ './views/Others/404'))
 const View500 = loadable(() => import(/* webpackChunkName: '500' */ './views/Others/500'))
 const Login = loadable(() => import(/* webpackChunkName: 'login' */ './views/Login'))
-
 const App = () => (
     <Router>
         <Switch>
