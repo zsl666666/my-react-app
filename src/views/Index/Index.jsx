@@ -8,12 +8,19 @@ import PieEcharts from './pie.jsx'
 import LineEcharts from './line.jsx'
 import ScatterEcharts from './scatter.jsx'
 import PictorialBarEcharts from './pictorialBar.jsx'
+import API from './api'
 
 class Index extends Component {
     fullToggle = () => {
         if (screenfull.isEnabled) {
             screenfull.request(document.getElementById('bar'))
         }
+    }
+    componentDidMount() {
+        console.log('sh')
+        API.getDingTime().then(res => {
+            console.log('gh', res)
+        })
     }
     render() {
         return (
