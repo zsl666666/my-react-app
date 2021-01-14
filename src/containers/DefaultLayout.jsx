@@ -9,6 +9,8 @@ import avatar from '@/assets/images/user.jpg'
 import menu from './menu'
 import '@/style/layout.scss'
 
+import Loading from '../components/CustomLoading'
+
 import AppHeader from './AppHeader.jsx'
 import AppAside from './AppAside.jsx'
 import AppFooter from './AppFooter.jsx'
@@ -89,38 +91,38 @@ class DefaultLayout extends Component {
             loginOut={this.loginOut}
           />
           <Content className='content'>
-            {/* <React.Suspense fallback={<Loading />}>
-                            <Switch>
-                                {routes.map(item => {
-                                    return (
-                                        <Route
-                                            key={item.path}
-                                            path={item.path}
-                                            exact={item.exact}
-                                            render={props =>
-                                                !auth ? (
-                                                    <item.component {...props} />
-                                                ) : item.auth && item.auth.indexOf(auth) !== -1 ? (
-                                                    <item.component {...props} />
-                                                ) : (
-                                                    // 这里也可以跳转到 403 页面
-                                                    <Redirect to='/404' {...props} />
-                                                )
-                                            }
-                                        ></Route>
-                                    )
-                                })}
-                                <Redirect to='/404' />
-                            </Switch>
-                        </React.Suspense> */}
-            <Switch>
+            <React.Suspense fallback={<Loading />}>
+              <Switch>
+                {routes.map(item => {
+                  return (
+                    <Route
+                      key={item.path}
+                      path={item.path}
+                      exact={item.exact}
+                      render={props =>
+                        !auth ? (
+                          <item.component {...props} />
+                        ) : item.auth && item.auth.indexOf(auth) !== -1 ? (
+                          <item.component {...props} />
+                        ) : (
+                          // 这里也可以跳转到 403 页面
+                          <Redirect to='/404' {...props} />
+                        )
+                      }></Route>
+                  )
+                })}
+                <Redirect to='/404' />
+              </Switch>
+            </React.Suspense>
+            {/* <Switch>
               {routes.map(item => {
+                console.log('object', item)
                 return (
                   <Route
                     key={item.path}
                     path={item.path}
                     exact={item.exact}
-                    render={props =>
+                    render={ props => 
                       !auth ? (
                         <item.component {...props} />
                       ) : item.auth && item.auth.indexOf(auth) !== -1 ? (
@@ -129,11 +131,12 @@ class DefaultLayout extends Component {
                         // 这里也可以跳转到 403 页面
                         <Redirect to='/404' {...props} />
                       )
-                    }></Route>
+                    }
+                  ></Route>
                 )
               })}
               <Redirect to='/404' />
-            </Switch>
+            </Switch> */}
           </Content>
           <AppFooter />
         </Layout>

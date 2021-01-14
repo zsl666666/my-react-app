@@ -5,7 +5,7 @@
 if (!Promise.prototype.finally) {
   /* eslint-disable-next-line no-extend-native */
   Promise.prototype.finally = function(callback) {
-    const p = this.constructor
+    // const p = this.constructor
     return this.then(
       value => Promise.resolve(callback.call(this, value)),
       reason =>

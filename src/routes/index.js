@@ -1,12 +1,19 @@
-import loadable from '@/utils/loadable'
+// import loadable from '@/utils/loadable'
+import { lazy } from 'react'
 
-const Index = loadable(() => import(/* webpackChunkName: 'index' */ '@/views/Index'))
+const Index = lazy(() => import(/* webpackChunkName: 'index' */ '@/views/Index'))
 
 // 通用
-const ButtonView = loadable(() => import(/* webpackChunkName: 'button' */ '@/views/PublicView/Button'))
-const IconView = loadable(() => import(/* webpackChunkName: 'icon' */ '@/views/PublicView/Icon'))
+const ButtonView = lazy(() => import(/* webpackChunkName: 'button' */ '@/views/PublicView/Button'))
+const IconView = lazy(() => import(/* webpackChunkName: 'icon' */ '@/views/PublicView/Icon'))
 
-// 导航
+// const Index = loadable(() => import(/* webpackChunkName: 'index' */ '@/views/Index'))
+
+// // 通用
+// const ButtonView = loadable(() => import(/* webpackChunkName: 'button' */ '@/views/PublicView/Button'))
+// const IconView = loadable(() => import(/* webpackChunkName: 'icon' */ '@/views/PublicView/Icon'))
+
+// // 导航
 // const DropdownView = loadable(() => import(/* webpackChunkName: 'dropdown' */ '@/views/NavView/Dropdown'))
 // const MenuView = loadable(() => import(/* webpackChunkName: 'menu' */ '@/views/NavView/Menu'))
 // const StepView = loadable(() => import(/* webpackChunkName: 'step' */ '@/views/NavView/Step'))
