@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Menu, Icon } from 'antd'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 class CustomMenu extends Component {
   constructor(props) {
     super(props)
     this.state = {
       openKeys: [],
-      selectedKeys: []
+      selectedKeys: [],
+      keyValue: '',
+      flag: true
     }
   }
 
@@ -72,12 +74,31 @@ class CustomMenu extends Component {
   renderMenuItem = ({ key, icon, title }) => {
     return (
       <Menu.Item key={key}>
-        <Link to={key}>
+        {/* <Link to={key}>
           {icon && <Icon type={icon} />}
           <span>{title}</span>
-        </Link>
+        </Link> */}
+        <div onClick={this.handleMenuItem.bind(this, key)}>
+          {icon && <Icon type={icon} />}
+          <span>{title}</span>
+        </div>
       </Menu.Item>
     )
+  }
+
+  handleMenuItem = key => {
+    console.log('ninshi', window.location)
+    if (this.state.flag && window.location.hash.indexOf(key) !== -1) {
+      this.setState({
+        keyValue: key,
+        flag: false
+      })
+    } else {
+      if (key !== this.state.keyValue) this.props.history.push(key)
+      this.setState({
+        keyValue: key
+      })
+    }
   }
 
   // 循环遍历数组中的子项 subs ，生成子级 menu
@@ -101,13 +122,19 @@ class CustomMenu extends Component {
 
   render() {
     let { openKeys, selectedKeys } = this.state
+    // console.log('打印一下看看', this.props.menu)
     return (
       <Menu
         mode='inline'
         theme='dark'
         openKeys={openKeys}
         selectedKeys={selectedKeys}
-        onClick={({ key }) => this.setState({ selectedKeys: [key] })}
+        onClick={({ key }) => {
+          if (selectedKeys.indexOf(key) === -1) {
+            console.log('ok')
+            this.setState({ selectedKeys: [key] })
+          }
+        }}
         onOpenChange={this.onOpenChange}>
         {this.props.menu &&
           this.props.menu.map(item => {
