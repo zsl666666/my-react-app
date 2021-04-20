@@ -1,34 +1,41 @@
+// import loadable from '@/utils/loadable'
 import { lazy } from 'react'
 
-const Index = lazy(_ => import(/* webpackChunkName: 'index' */ '@/views/Index'))
+const Index = lazy(() => import(/* webpackChunkName: 'index' */ '@/views/Index'))
 
 // 通用
-const ButtonView = lazy(_ => import(/* webpackChunkName: 'button' */ '@/views/PublicView/Button'))
-const IconView = lazy(_ => import(/* webpackChunkName: 'icon' */ '@/views/PublicView/Icon'))
+const ButtonView = lazy(() => import(/* webpackChunkName: 'button' */ '@/views/PublicView/Button'))
+const IconView = lazy(() => import(/* webpackChunkName: 'icon' */ '@/views/PublicView/Icon'))
 
-// 导航
-// const DropdownView = lazy(_ => import(/* webpackChunkName: 'dropdown' */ '@/views/NavView/Dropdown'))
-// const MenuView = lazy(_ => import(/* webpackChunkName: 'menu' */ '@/views/NavView/Menu'))
-// const StepView = lazy(_ => import(/* webpackChunkName: 'step' */ '@/views/NavView/Step'))
+// const Index = loadable(() => import(/* webpackChunkName: 'index' */ '@/views/Index'))
+
+// // 通用
+// const ButtonView = loadable(() => import(/* webpackChunkName: 'button' */ '@/views/PublicView/Button'))
+// const IconView = loadable(() => import(/* webpackChunkName: 'icon' */ '@/views/PublicView/Icon'))
+
+// // 导航
+// const DropdownView = loadable(() => import(/* webpackChunkName: 'dropdown' */ '@/views/NavView/Dropdown'))
+// const MenuVi ew = loadable(() => import(/* webpackChunkName: 'menu' */ '@/views/NavView/Menu'))
+// const StepView = loadable(() => import(/* webpackChunkName: 'step' */ '@/views/NavView/Step'))
 
 // // 表单
-// const FormBaseView = lazy(_ => import(/* webpackChunkName: 'formBase' */ '@/views/FormView/FormBaseView'))
-// const FormStepView = lazy(_ => import(/* webpackChunkName: 'formStep' */ '@/views/FormView/FormStepView'))
+// const FormBaseView = loadable(() => import(/* webpackChunkName: 'formBase' */ '@/views/FormView/FormBaseView'))
+// const FormStepView = loadable(() => import(/* webpackChunkName: 'formStep' */ '@/views/FormView/FormStepView'))
 
 // // 展示
-// const TableView = lazy(_ => import(/* webpackChunkName: 'table' */ '@/views/ShowView/Table'))
-// const CollapseView = lazy(_ => import(/* webpackChunkName: 'collapse' */ '@/views/ShowView/Collapse'))
-// const TreeView = lazy(_ => import(/* webpackChunkName: 'tree' */ '@/views/ShowView/Tree'))
-// const TabsView = lazy(_ => import(/* webpackChunkName: 'tabs' */ '@/views/ShowView/Tabs'))
+// const TableView = loadable(() => import(/* webpackChunkName: 'table' */ '@/views/ShowView/Table'))
+// const CollapseView = loadable(() => import(/* webpackChunkName: 'collapse' */ '@/views/ShowView/Collapse'))
+// const TreeView = loadable(() => import(/* webpackChunkName: 'tree' */ '@/views/ShowView/Tree'))
+// const TabsView = loadable(() => import(/* webpackChunkName: 'tabs' */ '@/views/ShowView/Tabs'))
 
 // // 其它
-// const ProgressView = lazy(_ => import(/* webpackChunkName: 'progress' */ '@/views/Others/Progress'))
-// const AnimationView = lazy(_ => import(/* webpackChunkName: 'animation' */ '@/views/Others/Animation'))
-// const EditorView = lazy(_ => import(/* webpackChunkName: 'editor' */ '@/views/Others/Editor'))
-// const UploadView = lazy(_ => import(/* webpackChunkName: 'upload' */ '@/views/Others/Upload'))
+// const ProgressView = loadable(() => import(/* webpackChunkName: 'progress' */ '@/views/Others/Progress'))
+// const AnimationView = loadable(() => import(/* webpackChunkName: 'animation' */ '@/views/Others/Animation'))
+// const EditorView = loadable(() => import(/* webpackChunkName: 'editor' */ '@/views/Others/Editor'))
+// const UploadView = loadable(() => import(/* webpackChunkName: 'upload' */ '@/views/Others/Upload'))
 
-// const Three = lazy(_ => import(/* webpackChunkName: 'three' */ '@/views/TestView'))
-// const About = lazy(_ => import(/* webpackChunkName: 'about' */ '@/views/About'))
+// const Three = loadable(() => import(/* webpackChunkName: 'three' */ '@/views/TestView'))
+// const About = loadable(() => import(/* webpackChunkName: 'about' */ '@/views/About'))
 
 const routes = [
   { path: '/index', exact: true, name: 'Index', component: Index, auth: [1] },

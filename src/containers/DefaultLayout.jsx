@@ -40,12 +40,32 @@ class DefaultLayout extends Component {
     message.success('登出成功!')
   }
   getMenu = menu => {
-    let newMenu,
-      auth = JSON.parse(localStorage.getItem('user')).auth
-    if (!auth) {
+    let newMenu
+    let auth = JSON.parse(localStorage.getItem('user')).auth
+    /**
+    if (！auth) { // 超级管理员
       return menu
     } else {
       newMenu = menu.filter(res => res.auth && res.auth.indexOf(auth) !== -1)
+      return newMenu
+    }
+     */
+    if (auth === 3 || auth === 2) {
+      // 超级/管理员
+      return menu
+    } else {
+      // 管理员
+      newMenu = menu.filter(m => {
+        if (m.auth && m.auth.indexOf(auth) !== -1) {
+          if (!m.subs) {
+            return m
+          } else {
+            const newSubs = m.subs.filter(g => g.auth && g.auth.indexOf(auth) !== -1)
+            m.subs = newSubs
+            return m
+          }
+        }
+      })
       return newMenu
     }
   }
@@ -99,16 +119,17 @@ class DefaultLayout extends Component {
                       key={item.path}
                       path={item.path}
                       exact={item.exact}
-                      render={props =>
-                        !auth ? (
-                          <item.component {...props} />
-                        ) : item.auth && item.auth.indexOf(auth) !== -1 ? (
-                          <item.component {...props} />
-                        ) : (
-                          // 这里也可以跳转到 403 页面
-                          <Redirect to='/404' {...props} />
-                        )
-                      }></Route>
+                      // render={props =>
+                      //   !auth ? (
+                      //     <item.component {...props} />
+                      //   ) : item.auth && item.auth.indexOf(auth) !== -1 ? (
+                      //     <item.component {...props} />
+                      //   ) : (
+                      //     // 这里也可以跳转到 403 页面
+                      //     <Redirect to='/404' {...props} />
+                      //   )
+                      // }
+                      render={props => <item.component {...props} />}></Route>
                   )
                 })}
                 <Redirect to='/404' />
