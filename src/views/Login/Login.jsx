@@ -31,17 +31,18 @@ class Login extends Component {
           },
           () => {
             message.success('登录成功')
-            localStorage.setItem('user', JSON.stringify(res))
+            localStorage.setItem('user', JSON.stringify(res.data))
             this.props.history.push('/')
           }
         )
       })
       .catch(err => {
-        message.error('用户不存在，请先注册~')
+        // console.log('errerr', err)
+        message.error(err.data.msg)
         this.setState({
           loading: false
         })
-        this.props.history.push('/signIn')
+        // this.props.history.push('/signIn')
       })
   }
 

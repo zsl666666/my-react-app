@@ -65,6 +65,7 @@ class DefaultLayout extends Component {
             return m
           }
         }
+        return null
       })
       return newMenu
     }
@@ -97,7 +98,7 @@ class DefaultLayout extends Component {
 
   render() {
     let { menuClick, menuToggle } = this.props
-    let { auth } = JSON.parse(localStorage.getItem('user')) ? JSON.parse(localStorage.getItem('user')) : ''
+    // let { auth } = JSON.parse(localStorage.getItem('user')) ? JSON.parse(localStorage.getItem('user')) : ''
     return (
       <Layout className='app'>
         <BackTop />

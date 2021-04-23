@@ -9,7 +9,7 @@ class Apis {
   /**
    * 登录接口
    */
-  GoLogin = post('/login', {}, { autoLoading: false })
+  GoLogin = post('/login')
 }
 
 export default new Apis()

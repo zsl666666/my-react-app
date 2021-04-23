@@ -5,14 +5,34 @@ const menu = [
     icon: 'home'
     // auth: [1]
   },
+  // {
+  //   title: '通用',
+  //   key: '/public',
+  //   icon: 'appstore',
+  //   auth: [1],
+  //   subs: [
+  //     { title: '按钮', key: '/public/button', icon: '', auth: [1] },
+  //     { title: '图标', key: '/public/icon', icon: '' }
+  //   ]
+  // },
   {
-    title: '通用',
-    key: '/public',
-    icon: 'appstore',
+    title: '信息管理',
+    key: '/peopleInfos',
+    icon: 'team',
     auth: [1],
     subs: [
-      { title: '按钮', key: '/public/button', icon: '', auth: [1] },
-      { title: '图标', key: '/public/icon', icon: '' }
+      { title: '信息可视化', key: '/peopleInfos/visual', icon: '', auth: [1] },
+      { title: '员工信息库', key: '/peopleInfos/library', icon: '', auth: [1] }
+    ]
+  },
+  {
+    title: '职位管理',
+    key: '/jobs',
+    icon: 'gateway',
+    auth: [1],
+    subs: [
+      { title: '人员职位信息', key: '/peopleInfos/visual', icon: '', auth: [1] },
+      { title: '职位变更', key: '/peopleInfos/library', icon: '', auth: [1] }
     ]
   }
   // {

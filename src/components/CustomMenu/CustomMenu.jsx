@@ -16,7 +16,6 @@ class CustomMenu extends Component {
 
   // 处理 pathname
   getOpenKeys = string => {
-    console.log('nish', string)
     let newStr = '',
       newArr = [],
       arr = string.split('/').map(i => '/' + i)
@@ -87,7 +86,6 @@ class CustomMenu extends Component {
   }
 
   handleMenuItem = key => {
-    console.log('ninshi', window.location)
     if (this.state.flag && window.location.hash.indexOf(key) !== -1) {
       this.setState({
         keyValue: key,
@@ -122,7 +120,6 @@ class CustomMenu extends Component {
 
   render() {
     let { openKeys, selectedKeys } = this.state
-    // console.log('打印一下看看', this.props.menu)
     return (
       <Menu
         mode='inline'
@@ -131,7 +128,6 @@ class CustomMenu extends Component {
         selectedKeys={selectedKeys}
         onClick={({ key }) => {
           if (selectedKeys.indexOf(key) === -1) {
-            console.log('ok')
             this.setState({ selectedKeys: [key] })
           }
         }}

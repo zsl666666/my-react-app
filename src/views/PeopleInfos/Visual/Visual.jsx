@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react'
-class Library extends PureComponent {
+class Visual extends PureComponent {
   constructor(props) {
     super(props)
     this.state = {}
   }
   render() {
-    return <>测试一下啊</>
+    return <>员工信息可视化开发中.....</>
   }
 }
 
-export default Library
+export default Visual

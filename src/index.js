@@ -4,8 +4,17 @@ import App from './App'
 import { Provider } from 'react-redux'
 import store from './store'
 import loading from './components/loading'
+import { LocaleProvider, ConfigProvider } from 'antd'
+import zhCN from 'antd/es/locale/zh_CN'
+// import zhCN from 'antd/lib/locale-provider/zh_CN';
 // import './network'
 // 页面加载完成监听
+
+import moment from 'moment'
+import 'moment/locale/zh-cn'
+// 设置日历语言
+moment.locale('zh-cn')
+
 document.addEventListener('DOMContentLoaded', e => {
   // 结束loading
   loading.hide()
@@ -14,7 +23,9 @@ document.addEventListener('DOMContentLoaded', e => {
 const ENTRY_CONTAINER = document.getElementById('entry-container')
 const AppView = (
   <Provider store={store}>
-    <App />
+    <ConfigProvider locale={zhCN}>
+      <App />
+    </ConfigProvider>
   </Provider>
 )
 

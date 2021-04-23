@@ -1,6 +1,6 @@
 import axios from 'axios'
 import axiosService from 'axios-service'
-// import loading from 'components/loading'
+import loading from '../components/loading'
 // import $user from 'user'
 // import srcConfig from 'src/config'
 // import { Message } from 'antd'
@@ -26,23 +26,23 @@ const instance = axios.create()
 
 const authAxiosService = axiosService.create()
 
-// authAxiosService.init(instance, {
-//     requestDefaults: {
-//         // 目前还没实现, 预计在下个版本中处理
-//         autoLoading: true,
-//         // response.data下面的配置
-//         // server端请求msg(
-//         msgKey: 'msg',
-//         // server端数据的key
-//         dataKey: 'data',
-//         // server端请求状态的key
-//         codeKey: 'code',
-//         // server端请求成功的状态, 注意: 此为response.data下该接口请求成功状态码, 非浏览器中http请求返回的成功状态(200)
-//         successCode: 200
-//     }
-// })
+authAxiosService.init(instance, {
+  requestDefaults: {
+    // 目前还没实现, 预计在下个版本中处理
+    autoLoading: true,
+    // response.data下面的配置
+    // server端请求msg(
+    msgKey: 'msg',
+    // server端数据的key
+    dataKey: 'data',
+    // server端请求状态的key
+    codeKey: 'code',
+    // server端请求成功的状态, 注意: 此为response.data下该接口请求成功状态码, 非浏览器中http请求返回的成功状态(200)
+    successCode: 0
+  }
+})
 
-authAxiosService.init(instance)
+// authAxiosService.init(instance)
 
 // 超时时间
 instance.defaults.timeout = TIME_OUT
@@ -62,6 +62,9 @@ instance.defaults.timeout = TIME_OUT
 
 instance.interceptors.request.use(
   config => {
+    if (config.autoLoading === undefined || config.autoLoading === true) {
+      loading.show()
+    }
     // debugger
     // console.log('token', token)
     // 将 token 添加到请求头
@@ -69,6 +72,7 @@ instance.interceptors.request.use(
     return config
   },
   error => {
+    loading.hide()
     return Promise.reject(error)
   }
 )
@@ -93,29 +97,56 @@ instance.interceptors.request.use(
 
 instance.interceptors.response.use(
   response => {
-    if (response.status === 200) {
-      return Promise.resolve(response)
-    } else {
-      return Promise.reject(response)
-    }
+    loading.hide()
+    return response
   },
   error => {
+    loading.hide()
     // 相应错误处理
     // 比如： token 过期， 无权限访问， 路径不存在， 服务器问题等
-    switch (error.response.status) {
-      case 401:
-        break
-      case 403:
-        break
-      case 404:
-        break
-      case 500:
-        break
-      default:
-      // console.log('其他错误信息')
-    }
+    // switch (error.response.status) {
+    //   case 401:
+    //     break
+    //   case 403:
+    //     break
+    //   case 404:
+    //     break
+    //   case 500:
+    //     break
+    //   default:
+    //   // console.log('其他错误信息')
+    // }
     return Promise.reject(error)
   }
 )
+
+// instance.interceptors.response.use(
+//   response => {
+//     loading.hide()
+//     if (response.status === 200) {
+//       return Promise.resolve(response)
+//     } else {
+//       return Promise.reject(response)
+//     }
+//   },
+//   error => {
+//     loading.hide()
+//     // 相应错误处理
+//     // 比如： token 过期， 无权限访问， 路径不存在， 服务器问题等
+//     switch (error.response.status) {
+//       case 401:
+//         break
+//       case 403:
+//         break
+//       case 404:
+//         break
+//       case 500:
+//         break
+//       default:
+//       // console.log('其他错误信息')
+//     }
+//     return Promise.reject(error)
+//   }
+// )
 
 export const { service, getRequestsByRoot, getMockDecoratorByEnv } = authAxiosService
