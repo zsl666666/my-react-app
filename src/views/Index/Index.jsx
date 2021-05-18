@@ -19,8 +19,9 @@ class Index extends Component {
 
   render() {
     return (
+      // <Layout className='index animated fadeIn'>
       <Layout className='index animated fadeIn'>
-        <Row gutter={24} className='index-header'>
+        {/* <Row gutter={24} className='index-header'>
           <Col span={6}>
             <div className='base-style wechat'>
               <Icon type='wechat' className='icon-style' />
@@ -57,12 +58,12 @@ class Index extends Component {
               </div>
             </div>
           </Col>
-        </Row>
+        </Row> */}
         <Row>
           <Col>
-            <div className='base-style'>
+            <div className='base-style' style={{ marginBottom: 0 }}>
               <div className='bar-header'>
-                <div>图形全屏展示</div>
+                <div>访问量展示</div>
                 <Icon type='fullscreen' style={{ cursor: 'pointer' }} onClick={this.fullToggle} />
               </div>
               <Divider />
@@ -70,7 +71,7 @@ class Index extends Component {
             </div>
           </Col>
         </Row>
-        <Row gutter={8}>
+        <Row gutter={8} style={{ display: 'none' }}>
           <Col span={12}>
             <div className='base-style'>
               <LineEcharts />

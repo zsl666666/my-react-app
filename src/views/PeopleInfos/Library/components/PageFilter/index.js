@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Input, Row, Button, Select, DatePicker } from 'antd'
+import { Form, Input, Row, Button } from 'antd'
 // import { librariesCodeList } from '../../constants/selects'
 import './index.scss'
 
@@ -38,9 +38,11 @@ class PageFilter extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: '',
-      value: '',
-      note: ''
+      englishName: '',
+      chineseName: '',
+      email: '',
+      education: '',
+      station: ''
     }
   }
 
@@ -49,13 +51,10 @@ class PageFilter extends Component {
    */
   get searchParams() {
     const filterParmas = this.props.form.getFieldsValue()
-    filterParmas.createTimeFormat = filterParmas.createTimeFormat
-      ? new Date(filterParmas.createTimeFormat).format('yyyy-MM-dd')
-      : ''
     const params = {
       ...this.props.searchParams,
       ...filterParmas,
-      pageNo: 1
+      pageNum: 1
     }
     return params
   }
@@ -83,14 +82,20 @@ class PageFilter extends Component {
             <p style={styles.title}>查询条件</p>
           </Row>
           <Row style={styles.search}>
-            <Form.Item label='DB简称' style={styles.item}>
-              {getFieldDecorator('name', {})(<Input allowClear placeholder='请输入DB简称' />)}
+            <Form.Item label='英文名' style={styles.item}>
+              {getFieldDecorator('englishName', {})(<Input allowClear placeholder='请输入英文名' />)}
             </Form.Item>
-            <Form.Item label='描述' style={styles.item}>
-              {getFieldDecorator('note', {})(<Input allowClear placeholder='请输入描述' />)}
+            <Form.Item label='中文名' style={styles.item}>
+              {getFieldDecorator('chineseName', {})(<Input allowClear placeholder='请输入中文名' />)}
             </Form.Item>
-            <Form.Item label='创建人' style={styles.item}>
-              {getFieldDecorator('creator', {})(<Input allowClear placeholder='请输入创建人' />)}
+            <Form.Item label='Email' style={styles.item}>
+              {getFieldDecorator('email', {})(<Input allowClear placeholder='请输入Email' />)}
+            </Form.Item>
+            <Form.Item label='学历' style={styles.item}>
+              {getFieldDecorator('education', {})(<Input allowClear placeholder='请输入学历' />)}
+            </Form.Item>
+            <Form.Item label='工位' style={styles.item}>
+              {getFieldDecorator('station', {})(<Input allowClear placeholder='请输入工位' />)}
             </Form.Item>
             {/* <Form.Item label="DB配置类型" style={styles.item}>
             {getFieldDecorator('isMulti', {
@@ -108,18 +113,18 @@ class PageFilter extends Component {
               </Select>
             )}
           </Form.Item> */}
-            <Form.Item label='创建时间' style={styles.item}>
+            {/* <Form.Item label='创建时间' style={styles.item}>
               {getFieldDecorator('createTimeFormat', {})(<DatePicker format='YYYY-MM-DD' style={{ width: '190px' }} />)}
-            </Form.Item>
+            </Form.Item> */}
           </Row>
           <Row style={styles.handle}>
             <p style={styles.title}>操作</p>
             <Button type='primary' style={styles.btn} onClick={this.handleSearch}>
               查询
             </Button>
-            <Button type='primary' style={styles.btn} onClick={this.handleAdd}>
-              新增
-            </Button>
+            {/* <Button type='primary' style={styles.btn} onClick={this.handleAdd}>
+              编辑个人信息
+            </Button> */}
           </Row>
         </Form>
       </div>

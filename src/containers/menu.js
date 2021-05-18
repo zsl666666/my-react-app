@@ -2,8 +2,8 @@ const menu = [
   {
     key: '/index',
     title: '首页',
-    icon: 'home'
-    // auth: [1]
+    icon: 'home',
+    auth: [1]
   },
   // {
   //   title: '通用',
@@ -21,19 +21,56 @@ const menu = [
     icon: 'team',
     auth: [1],
     subs: [
-      { title: '信息可视化', key: '/peopleInfos/visual', icon: '', auth: [1] },
-      { title: '员工信息库', key: '/peopleInfos/library', icon: '', auth: [1] }
+      // { title: '信息可视化', key: '/peopleInfos/visual', icon: '', auth: [1] },
+      { title: '员工信息库', key: '/peopleInfos/library', icon: '', auth: [1] },
+      { title: '新员工信息录入', key: '/peopleInfos/typeIn', icon: '' },
+      { title: '员工迁出', key: '/peopleInfos/emigration', icon: '' }
     ]
   },
   {
     title: '职位管理',
-    key: '/jobs',
+    key: '/peopleJobs',
     icon: 'gateway',
     auth: [1],
     subs: [
-      { title: '人员职位信息', key: '/peopleInfos/visual', icon: '', auth: [1] },
-      { title: '职位变更', key: '/peopleInfos/library', icon: '', auth: [1] }
+      { title: '人员职位信息', key: '/peopleJobs/infos', icon: '', auth: [1] },
+      { title: '部门信息', key: '/peopleJobs/change', icon: '' }
     ]
+  },
+  {
+    title: '薪资管理',
+    key: '/pay',
+    icon: 'red-envelope',
+    auth: [1],
+    subs: [
+      { title: '个人薪资信息', key: '/pay/personInfos', icon: '', auth: [1] },
+      { title: '员工薪资信息', key: '/pay/staffInfos', icon: '' }
+    ]
+  },
+  {
+    title: '奖惩管理',
+    key: '/awardPunishment',
+    icon: 'reconciliation',
+    auth: [1],
+    subs: [
+      { title: '个人奖惩信息', key: '/awardPunishment/query', icon: '', auth: [1] },
+      { title: '奖惩信息变更', key: '/awardPunishment/update', icon: '' }
+    ]
+  },
+  // {
+  //   title: '录入与迁出',
+  //   key: '/enterOut',
+  //   icon: 'appstore',
+  //   subs: [
+  //     { title: '新员工信息录入', key: '/enterOut/typeIn', icon: '' },
+  //     { title: '员工迁出', key: '/enterOut/emigration', icon: '' },
+  //   ]
+  // },
+  {
+    title: '权限管理',
+    key: '/authority',
+    icon: 'setting',
+    subs: [{ title: '角色管理', key: '/authority/role', icon: '' }]
   }
   // {
   //     title: '导航',

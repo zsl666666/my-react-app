@@ -4,8 +4,9 @@ import App from './App'
 import { Provider } from 'react-redux'
 import store from './store'
 import loading from './components/loading'
-import { LocaleProvider, ConfigProvider } from 'antd'
+import { ConfigProvider } from 'antd'
 import zhCN from 'antd/es/locale/zh_CN'
+import '@/utils/proto-extension.js'
 // import zhCN from 'antd/lib/locale-provider/zh_CN';
 // import './network'
 // 页面加载完成监听
